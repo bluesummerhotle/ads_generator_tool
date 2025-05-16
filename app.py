@@ -32,12 +32,5 @@ def index():
 
     return render_template('index.html', results=results)
 
-@app.route('/download', methods=['POST'])
-def download():
-    data = request.form.get('data')
-    df = pd.read_json(data)
-    df.to_csv('ads_output.csv', index=False)
-    return "<h3>Đã xuất ra file ads_output.csv thành công!</h3>"
-
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
