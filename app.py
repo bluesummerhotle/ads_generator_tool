@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import pandas as pd
-import os
 
 app = Flask(__name__)
 
@@ -14,7 +13,6 @@ def index():
         location = request.form['location']
         cta = request.form['cta']
 
-        # Tạo tiêu đề và mô tả cơ bản (hardcode mẫu cho bước 1)
         results = [
             {
                 'Headline 1': f"{product_name} Thiết Kế Riêng",
@@ -42,6 +40,4 @@ def download():
     return "<h3>Đã xuất ra file ads_output.csv thành công!</h3>"
 
 if __name__ == '__main__':
-    if not os.path.exists('templates'):
-        os.makedirs('templates')
     app.run(debug=True, port=5000)
